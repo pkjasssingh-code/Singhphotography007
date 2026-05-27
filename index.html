@@ -6,40 +6,52 @@
     <title>Singh Photography | Official Website</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #121212; color: #fff; }
+        body { background-color: #121212; color: #fff; scroll-behavior: smooth; }
         
         /* Header & Navigation */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #1a1a1a; position: sticky; top: 0; z-index: 1000; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #1a1a1a; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222; }
         .logo { font-size: 24px; font-weight: bold; color: #ffd700; letter-spacing: 1px; }
-        nav a { color: #fff; text-decoration: none; margin-left: 20px; transition: 0.3s; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; transition: 0.3s; font-weight: 500; }
         nav a:hover { color: #ffd700; }
 
         /* Hero Section */
         .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('your-best-photo.jpg') no-repeat center center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
         .hero h1 { font-size: 50px; margin-bottom: 10px; color: #fff; }
         .hero p { font-size: 20px; color: #ccc; margin-bottom: 20px; }
-        .btn { padding: 12px 30px; background: #ffd700; color: #121212; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; transition: 0.3s; }
+        .btn { display: inline-block; padding: 12px 30px; background: #ffd700; color: #121212; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; transition: 0.3s; }
         .btn:hover { background: #fff; transform: scale(1.05); }
 
+        /* General Section Styling */
+        .section { padding: 80px 8%; text-align: center; }
+        .section h2 { font-size: 36px; margin-bottom: 40px; color: #ffd700; text-transform: uppercase; letter-spacing: 1px; }
+        
         /* Portfolio Gallery */
-        .section { padding: 60px 8%; text-align: center; }
-        .section h2 { font-size: 36px; margin-bottom: 30px; color: #ffd700; position: relative; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); grid-gap: 20px; }
         .gallery-item { position: relative; overflow: hidden; border-radius: 8px; height: 250px; background: #222; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .gallery-item:hover img { transform: scale(1.1); }
 
         /* Pricing Table */
-        .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px; }
-        .card { background: #1a1a1a; padding: 30px; border-radius: 8px; width: 300px; border: 1px solid #333; transition: 0.3s; }
-        .card:hover { border-color: #ffd700; transform: translateY(-5px); }
-        .card h3 { font-size: 24px; color: #ffd700; margin-bottom: 15px; }
-        .price { font-size: 28px; font-weight: bold; margin-bottom: 20px; }
-        .card ul { list-style: none; text-align: left; margin-bottom: 20px; color: #ccc; }
-        .card ul li { margin-bottom: 10px; }
+        .packages { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .card { background: #1a1a1a; padding: 35px 25px; border-radius: 12px; width: 320px; border: 1px solid #333; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { border-color: #ffd700; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1); }
+        .card.featured { border: 2px solid #ffd700; position: relative; }
+        .card.featured::before { content: "MOST POPULAR"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ffd700; color: #121212; padding: 4px 15px; font-size: 12px; font-weight: bold; border-radius: 20px; }
+        .card h3 { font-size: 26px; color: #ffd700; margin-bottom: 15px; }
+        .price { font-size: 32px; font-weight: bold; margin-bottom: 25px; color: #fff; }
+        .card ul { list-style: none; text-align: left; margin-bottom: 30px; color: #ccc; flex-grow: 1; }
+        .card ul li { margin-bottom: 12px; border-bottom: 1px solid #252525; padding-bottom: 8px; }
+        .card ul li::before { content: "✓  "; color: #ffd700; font-weight: bold; }
+
+        /* Contact Section */
+        .contact-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 40px; border-radius: 12px; border: 1px solid #333; }
+        .contact-info { margin-bottom: 25px; font-size: 20px; }
+        .phone-num { font-size: 28px; color: #ffd700; font-weight: bold; margin: 15px 0; display: block; text-decoration: none; }
+        .btn-whatsapp { background: #25D366; color: #fff; margin-top: 10px; }
+        .btn-whatsapp:hover { background: #20ba5a; }
 
         /* Footer */
-        footer { background: #1a1a1a; text-align: center; padding: 20px; color: #777; border-top: 1px solid #333; }
+        footer { background: #1a1a1a; text-align: center; padding: 25px; color: #777; border-top: 1px solid #222; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -77,28 +89,67 @@
     <div class="section" id="pricing">
         <h2>Photography Packages</h2>
         <div class="packages">
+            <!-- Silver Package -->
             <div class="card">
-                <h3>Silver Package</h3>
-                <div class="price">₹25,000</div>
-                <ul>
-                    <li>1 Day Event Shoot</li>
-                    <li>Unlimited Soft Copies</li>
-                    <li>50 Edited High-Res Photos</li>
-                    <li>Standard Photo Album</li>
-                </ul>
+                <div>
+                    <h3>Silver Package</h3>
+                    <div class="price">₹25,000</div>
+                    <ul>
+                        <li>1 Day Event Shoot</li>
+                        <li>Unlimited Soft Copies</li>
+                        <li>50 Edited High-Res Photos</li>
+                        <li>Standard Photo Album</li>
+                    </ul>
+                </div>
                 <a href="#contact" class="btn">Select</a>
             </div>
+
+            <!-- Gold Package -->
             <div class="card">
-                <h3>Gold Package</h3>
-                <div class="price">₹55,000</div>
-                <ul>
-                    <li>Wedding + Pre-Wedding</li>
-                    <li>Cinematic Video / Teaser</li>
-                    <li>100 Edited HD Photos</li>
-                    <li>Premium Glossy Album</li>
-                </ul>
+                <div>
+                    <h3>Gold Package</h3>
+                    <div class="price">₹55,000</div>
+                    <ul>
+                        <li>Wedding + Pre-Wedding</li>
+                        <li>Cinematic Video / Teaser</li>
+                        <li>100 Edited HD Photos</li>
+                        <li>Premium Glossy Album</li>
+                    </ul>
+                </div>
                 <a href="#contact" class="btn">Select</a>
             </div>
+
+            <!-- Diamond Package (New) -->
+            <div class="card featured">
+                <div>
+                    <h3>Diamond Package</h3>
+                    <div class="price">₹1,50,000</div>
+                    <ul>
+                        <li><strong>Pre-Wedding Shoot Included</strong></li>
+                        <li><strong>3-Days Functions Cover</strong></li>
+                        <li>All Videos & Photos (Full Coverage)</li>
+                        <li>2 Premium Photo Albums</li>
+                        <li>2 Pen Drives (with HD Data)</li>
+                        <li>3 Gift Portrait Albums</li>
+                        <li>1 Large Photo Frame</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn">Select Diamond</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section" id="contact">
+        <h2>Book Your Shoot</h2>
+        <div class="contact-container">
+            <p class="contact-info">Apna event book karne ya zyada jankari ke liye hume call ya WhatsApp karein:</p>
+            
+            <!-- YAHA APNA NUMBER BADLEIN -->
+            <a href="tel:+919999999999" class="phone-num">📞 +91 99999 99999</a>
+            
+            <!-- YAHA BHI APNA NUMBER DAALEIN (text= ke baad aap apna message badal sakte hain) -->
+            <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20book%20a%20shoot%20with%20Singh%20Photography." target="_blank" class="btn btn-whatsapp">💬 Chat on WhatsApp</a>
         </div>
     </div>
 
